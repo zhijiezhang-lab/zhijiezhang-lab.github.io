@@ -13,4 +13,4 @@ We are looking for a postdoc with theoretical ecology background to study the co
 Prospective Ph.D. students should contact us as early as possible—typically in the sixth semester for bachelor's students or the fifth semester for master's students.
 
 ## Undergraduate and Research assistant
-We also keep around two undergraduate/research assistants in the lab.
+We also keep around two undergraduates (or research assistants) working in the lab.
