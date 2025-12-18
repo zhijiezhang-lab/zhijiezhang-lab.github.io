@@ -2,9 +2,6 @@
 permalink: /join/
 title: "Join the Team"
 author_profile: false
-redirect_from: 
-  - /join/
-  - /join.html
 ---
 
 Students and postdocs interested in integrating models and experiments to understand the origin and maintenance of biodiversity are encouraged to contact us. Please email zhijie.zhang at pku.edu.cn, outlining your research background, motivation, and potential project ideas, and attaching your CV.
