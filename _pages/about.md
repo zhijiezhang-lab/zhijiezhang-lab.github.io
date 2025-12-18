@@ -1,10 +1,10 @@
 ---
 permalink: /
-title: ""
+title: "Hello"
 author_profile: false
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-testtest
+We are 

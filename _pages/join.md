@@ -1,6 +1,6 @@
 ---
-permalink: /
-title: ""
+permalink: /join/
+title: "Join the Team"
 author_profile: false
 redirect_from: 
   - /join/
