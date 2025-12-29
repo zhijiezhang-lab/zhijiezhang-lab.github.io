@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /ppl/
-title: "People"
+title: "People-md"
 author_profile: false
 ---
 
