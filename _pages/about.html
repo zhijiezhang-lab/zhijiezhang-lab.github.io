@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: compress
 title: "Hello"
 permalink: /
 ---
@@ -26,16 +26,28 @@ permalink: /
       <!-- Slide 1 -->
       <div class="css-carousel-slide" style="position: absolute; width: 100%; opacity: 0;">
         <img src="../images/about-ot2.jpeg" alt="Liquid-handling robot" style="width: 100%; height: 400px; object-fit: cover;">
+        <div class="slide-caption">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Liquid-Handling Robot</h3>
+          <p style="margin: 5px 0 0; font-size: 14px;">Automated platform for experimental setups</p>
+        </div>
       </div>
       
       <!-- Slide 2 -->
       <div class="css-carousel-slide" style="position: absolute; width: 100%; opacity: 0;">
         <img src="../images/about-cell.png" alt="High-content imaging" style="width: 100%; height: 400px; object-fit: cover;">
+        <div class="slide-caption">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 600;">High-Content Imaging</h3>
+          <p style="margin: 5px 0 0; font-size: 14px;">Advanced microscopy for phenotyping</p>
+        </div>
       </div>
 
       <!-- Slide 3 -->
       <div class="css-carousel-slide" style="position: absolute; width: 100%; opacity: 0;">
         <img src="../images/about-plant.JPG" alt="Greenhouse" style="width: 100%; height: 400px; object-fit: cover;">
+        <div class="slide-caption">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Greenhouse experiment</h3>
+          <p style="margin: 5px 0 0; font-size: 14px;">Studying plants in controlled environments</p>
+        </div>
       </div>
     </div>
   </div>
@@ -57,8 +69,22 @@ permalink: /
   position: absolute;
   width: 100%;
   height: 100%;
-  animation: slide 9s infinite;
+  animation: slide 12s infinite;
   opacity: 0;
+}
+
+/* Caption Styling */
+.css-carousel-slide .slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 20px;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 /* Animation for each slide */
@@ -67,30 +93,40 @@ permalink: /
 }
 
 .css-carousel-slide:nth-child(2) {
-  animation-delay: 3s;
+  animation-delay: 4s;
 }
 
 .css-carousel-slide:nth-child(3) {
-  animation-delay: 6s;
+  animation-delay: 8s;
 }
 
 /* Keyframes for the slide animation */
 @keyframes slide {
   0% {
     opacity: 0;
+    transform: translateY(10px);
   }
-  10% {
+  5% {
     opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
   }
   30% {
-    opacity: 1;
-  }
-  40% {
     opacity: 0;
+    transform: translateY(-10px);
   }
   100% {
     opacity: 0;
+    transform: translateY(-10px);
   }
+}
+
+/* Pause animation on hover */
+.css-carousel:hover .css-carousel-slide {
+  animation-play-state: paused;
 }
 
 /* Mobile-first responsive adjustments */
@@ -102,6 +138,30 @@ permalink: /
   
   .css-carousel-slide img {
     height: 250px !important;
+  }
+  
+  .css-carousel-slide .slide-caption {
+    padding: 10px 15px;
+  }
+  
+  .css-carousel-slide .slide-caption h3 {
+    font-size: 16px !important;
+  }
+  
+  .css-carousel-slide .slide-caption p {
+    font-size: 12px !important;
+    margin-top: 3px !important;
+  }
+}
+
+/* For tablets */
+@media (max-width: 768px) and (min-width: 601px) {
+  .css-carousel {
+    height: 350px !important;
+  }
+  
+  .css-carousel-slide img {
+    height: 350px !important;
   }
 }
 </style>
