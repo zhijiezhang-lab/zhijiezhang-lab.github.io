@@ -11,8 +11,8 @@ main:
   - title: "About"
     url: /
     
-  - title: "Research"
-    url: /research/
+  #- title: "Research"
+  #  url: /research/
     
   - title: "Team"
     url: /ppl/
