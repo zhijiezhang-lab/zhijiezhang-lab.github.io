@@ -34,7 +34,7 @@ permalink: /
       
       <!-- Slide 2 -->
       <div class="slide" style="min-width: 100%; position: relative;">
-        <img src="{{ 'images/about-cell.png' | relative_url }}g" alt="Greenhouse" style="width: 100%; height: 400px; object-fit: cover;">
+        <img src="../images/about-cell.png" alt="Greenhouse" style="width: 100%; height: 400px; object-fit: cover;">
         <div class="slide-caption" style="text-align: left">
           <p>Fluorescence image of two phytoplankton species </p>
         </div>
@@ -102,9 +102,11 @@ permalink: /
 
 
 // ====== JAVASCRIPT FOR AUTO-SLIDING ======
-document.addEventListener('DOMContentLoaded', function() {
+function initCarousel() {
+  console.log('Initializing carousel...');
+  
   // Configuration
-  const SLIDE_INTERVAL = 4000; // 3 seconds
+  const SLIDE_INTERVAL = 15; // 3 seconds
   let currentSlide = 0;
   let slideInterval;
   
@@ -113,6 +115,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.carousel-dot');
   const totalSlides = slides.length;
+  
+  // Check if elements exist
+  if (!slidesContainer || totalSlides === 0) {
+    console.error('Carousel elements not found!');
+    return;
+  }
+  
+  console.log(`Found ${totalSlides} slides`);
   
   // Function to go to a specific slide
   function goToSlide(n) {
@@ -138,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to start auto-sliding
   function startAutoSlide() {
+    clearInterval(slideInterval); // Clear any existing interval
     slideInterval = setInterval(nextSlide, SLIDE_INTERVAL);
   }
   
@@ -159,35 +170,37 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Pause on hover
   const carousel = document.querySelector('.carousel-container');
-  carousel.addEventListener('mouseenter', stopAutoSlide);
-  carousel.addEventListener('mouseleave', startAutoSlide);
-  
-  // Make it work on touch devices
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  carousel.addEventListener('touchstart', function(e) {
-    touchStartX = e.changedTouches[0].screenX;
-    stopAutoSlide();
-  });
-  
-  carousel.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-    startAutoSlide();
-  });
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
+  if (carousel) {
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
     
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
-        // Swipe left - next slide
-        nextSlide();
-      } else {
-        // Swipe right - previous slide
-        goToSlide(currentSlide - 1);
+    // Make it work on touch devices
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoSlide();
+    });
+    
+    carousel.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoSlide();
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left - next slide
+          nextSlide();
+        } else {
+          // Swipe right - previous slide
+          goToSlide(currentSlide - 1);
+        }
       }
     }
   }
@@ -195,5 +208,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize carousel
   goToSlide(0); // Start at first slide
   startAutoSlide(); // Begin auto-sliding
-});
+  
+  console.log('Carousel initialized successfully');
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCarousel);
+} else {
+  initCarousel();
+}
 </script>
